@@ -23,9 +23,6 @@ class USRPConfig:
     tx_channel_idx: str = "0"
     rx_channel_idx: str = "0"
 
-    wave_type:str = "SINE"
-    wave_freq: float = "100e3"
-    ampl: float = 0.3
     tx_gain: float = 0
     rx_gain:float = 0
     otw:str = "sc16"
@@ -83,8 +80,8 @@ def run_transfer(
 
 
         #Fixed constants (OTW format, types)
-        "--otw", "sc16",
-        "--type", "float",
+        "--otw", config.otw,
+        "--type", config.type,
         "--tx-type", "float",
         "--settling", "0",
         "--tx-spb", "0",
