@@ -5,8 +5,8 @@ import pathlib
 import argparse
 import matplotlib.pyplot as plt
 #Internal
-from ofdm.utils import usrp
-from ofdm.viz import plotter
+import usrp
+
 
 def main():
     parser = argparse.ArgumentParser(description="Generate Single Tone Sine wave for Testing Hardware")
@@ -91,13 +91,13 @@ def main():
     
 
     #Plot Rx data
-    plotter.plot_time_series(signal = signal, fs = FS, title="Test Sine Wave Real")
-    plotter.plot_symbol_freq(symbol = np.fft.fftshift(np.abs(np.fft.fft(signal))), title =f"Rx FFT Plot Freq = {FREQ}")
+    # plotter.plot_time_series(signal = signal, fs = FS, title="Test Sine Wave Real")
+    # plotter.plot_symbol_freq(symbol = np.fft.fftshift(np.abs(np.fft.fft(signal))), title =f"Rx FFT Plot Freq = {FREQ}")
 
-    #Plot Ref data
-    plotter.plot_time_series(signal=ref_signal, fs = FS, title = "Ref Sine Wave Real")
-    plotter.plot_symbol_freq(symbol = np.fft.fftshift(np.abs(np.fft.fft(ref_signal))), title="Ref FFT Plot")
-    plt.show()
+    # #Plot Ref data
+    # plotter.plot_time_series(signal=ref_signal, fs = FS, title = "Ref Sine Wave Real")
+    # plotter.plot_symbol_freq(symbol = np.fft.fftshift(np.abs(np.fft.fft(ref_signal))), title="Ref FFT Plot")
+    # plt.show()
 
 def generate_tone(fs:float, freq:float, n_samples:float, n_buffer: int = 1000):
 
