@@ -90,6 +90,24 @@ def main():
     print(f"[Test] Calculated CFO is {np.abs(rx_freq - FREQ)}")
     
 
+    plt.figure()
+    plt.plot(signal)
+    plt.title("RX Signal Time")
+    
+    plt.figure()
+    plt.plot(freqs, np.fft.fftshift(np.fft.fft(signal)))
+    plt.title("RX Signal Freq")
+
+    plt.figure()
+    plt.plot(ref_signal)
+    plt.title("Reference TX Signal Time")
+    
+    plt.figure()
+    plt.plot(freqs, np.fft.fftshift(np.fft.fft(ref_signal)))
+    plt.title("Reference TX Signal Freq")
+
+    plt.show()
+
     #Plot Rx data
     # plotter.plot_time_series(signal = signal, fs = FS, title="Test Sine Wave Real")
     # plotter.plot_symbol_freq(symbol = np.fft.fftshift(np.abs(np.fft.fft(signal))), title =f"Rx FFT Plot Freq = {FREQ}")
