@@ -91,31 +91,26 @@ def main():
     
 
     plt.figure()
-    plt.plot(signal)
+    plt.plot(np.real(signal), label="Real")
+    plt.plot(np.imag(signal), label="Imag")
+    plt.legend()
     plt.title("RX Signal Time")
     
     plt.figure()
-    plt.plot(freqs, np.fft.fftshift(np.fft.fft(signal)))
-    plt.title("RX Signal Freq")
+    plt.plot(freqs, np.abs(np.fft.fftshift(np.fft.fft(signal))))
+    plt.title("RX Signal Freq Magnitude")
 
     plt.figure()
-    plt.plot(ref_signal)
+    plt.plot(np.real(ref_signal), label="Real")
+    plt.plot(np.imag(ref_signal), label="Imag")
+    plt.legend()
     plt.title("Reference TX Signal Time")
     
     plt.figure()
-    plt.plot(freqs, np.fft.fftshift(np.fft.fft(ref_signal)))
+    plt.plot(freqs, np.abs(np.fft.fftshift(np.fft.fft(ref_signal))))
     plt.title("Reference TX Signal Freq")
 
     plt.show()
-
-    #Plot Rx data
-    # plotter.plot_time_series(signal = signal, fs = FS, title="Test Sine Wave Real")
-    # plotter.plot_symbol_freq(symbol = np.fft.fftshift(np.abs(np.fft.fft(signal))), title =f"Rx FFT Plot Freq = {FREQ}")
-
-    # #Plot Ref data
-    # plotter.plot_time_series(signal=ref_signal, fs = FS, title = "Ref Sine Wave Real")
-    # plotter.plot_symbol_freq(symbol = np.fft.fftshift(np.abs(np.fft.fft(ref_signal))), title="Ref FFT Plot")
-    # plt.show()
 
 def generate_tone(fs:float, freq:float, n_samples:float, n_buffer: int = 1000):
 
